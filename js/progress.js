@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
         percentageText.textContent = `${progress}%`;
 
         // Retro janky load speed simulation
-        setTimeout(updateLoading, Math.random() * 300 + 50); 
+        setTimeout(updateLoading, Math.random() * 300 + 50);
     }
 
     updateLoading();
-    
+
     // Simple blinking cursor effect for text
     setInterval(() => {
         if (loadingText) {

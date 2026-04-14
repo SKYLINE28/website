@@ -104,28 +104,73 @@ function createBackgroundPixels() {
 document.addEventListener("DOMContentLoaded", createBackgroundPixels);
 
 /* Theme Toggle Setup */
-const currentTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', currentTheme);
-
 document.addEventListener("DOMContentLoaded", function () {
     const themeToggle = document.getElementById('theme-toggle');
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+
     if (themeToggle) {
-        if (currentTheme === 'dark') themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        if (currentTheme === 'dark') themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i> <span>Light Mode</span>';
 
         themeToggle.addEventListener('click', (e) => {
             let theme = document.documentElement.getAttribute('data-theme');
             if (theme === 'dark') {
                 theme = 'light';
-                themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i> <span>Dark Mode</span>';
             } else {
                 theme = 'dark';
-                themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+                themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i> <span>Light Mode</span>';
             }
             document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
             // Fireworks are handled globally above now
         });
     }
+
+    /* Floating Menu Logic */
+    const mainMenuBtn = document.getElementById('main-menu-btn');
+    const dropMenu = document.getElementById('drop-menu');
+
+    if (mainMenuBtn && dropMenu) {
+        mainMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropMenu.classList.toggle('active');
+        });
+
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropMenu.contains(e.target) && !mainMenuBtn.contains(e.target)) {
+                dropMenu.classList.remove('active');
+            }
+        });
+    }
+
+    /* URL Parameter intercept to persist theme across file:// pages */
+    document.addEventListener("click", function (e) {
+        const link = e.target.closest('a');
+        if (link && link.href && !link.href.startsWith('http') && !link.href.includes('#')) {
+            const theme = document.documentElement.getAttribute('data-theme');
+            if (theme) {
+                e.preventDefault();
+                try {
+                    const url = new URL(link.href, window.location.href);
+                    url.searchParams.set('theme', theme);
+                    window.location.href = url.toString();
+                } catch (error) {
+                    window.location.href = link.href;
+                }
+            }
+        }
+    });
 });
 
+/* Scroll To Top Logic */
+const scrollTopBtn = document.getElementById('scroll-top');
+if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+        scrollTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
 
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}

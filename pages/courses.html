@@ -5,20 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TwentyEgg | Courses</title>
-    <meta name="description"
-        content="Portfolio of Damar Rifaldi Mutakin aka TwentyEgg — Informatics student at ITERA, building websites and games.">
-    <meta property="og:title" content="TwentyEgg | Portfolio">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Portfolio of Damar Rifaldi Mutakin aka TwentyEgg — Informatics student at ITERA, building websites and games.">
+    <meta name="author" content="Damar Rifaldi Mutakin">
+    <meta property="og:title" content="TwentyEgg | Courses">
     <meta property="og:description" content="Portfolio of Damar Rifaldi Mutakin — web developer & game enthusiast">
+    <meta property="og:image" content="../assets/images/avatar.jpg">
+    <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#D97757">
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="../css/style.css">
     <script>
-        // Prevent FOUC and handle file:// protocol theme sharing
         let currentTheme = localStorage.getItem('theme');
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('theme')) {
@@ -32,7 +38,10 @@
 </head>
 
 <body>
-    <div class="floating-menu-container">
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <nav class="floating-menu-container">
         <button id="main-menu-btn" class="pixel-btn main-menu-btn" aria-label="Open Menu">
             <i class="fa-solid fa-bars"></i>
         </button>
@@ -50,19 +59,19 @@
                 <i class="fa-solid fa-hand-holding-dollar"></i> Support
             </a>
         </div>
-    </div>
+    </nav>
 
-    <div class="container support-container">
-        <section class="pixel-panel feature-box likes-panel">
-            <div class="panel-header">
+    <main class="container courses-panel mt-4 reveal">
+        <section class="pixel-panel flex-center" style="flex-direction: column;">
+            <div class="panel-header" style="width: 100%;">
                 <h3>> ACTIVE_COURSES.exe</h3>
             </div>
-            <div class="panel-body likes-body">
-                <p style="margin-bottom: 2rem; font-size: 1.2rem;">Berikut adalah kursus/pembelajaran offline & online
+            <div class="panel-body text-left">
+                <p class="mb-3">Berikut adalah kursus/pembelajaran offline & online
                     yang saat ini sedang saya dalami untuk meningkatkan skill development saya:</p>
                 <div class="grid-2">
                     <div class="favorite-category">
-                        <h4 class="category-title"><i class="fa-brands fa-html5"></i> Web Fundamentals</h4>
+                        <h4 class="mb-1 highlight"><i class="fa-brands fa-html5"></i> Web Fundamentals</h4>
                         <ul class="pixel-list">
                             <li><span class="bullet">■</span> Mempelajari Fundamental HTML</li>
                             <li><span class="bullet">■</span> Mempelajari Fundamental CSS</li>
@@ -71,7 +80,7 @@
                         </ul>
                     </div>
                     <div class="favorite-category">
-                        <h4 class="category-title"><i class="fa-solid fa-brain"></i> CS & Fundamentals</h4>
+                        <h4 class="mb-1 highlight"><i class="fa-solid fa-brain"></i> CS & Fundamentals</h4>
                         <ul class="pixel-list">
                             <li><span class="bullet">■</span> Algoritma & Struktur Data (C++)</li>
                             <li><span class="bullet">■</span> Konsep Basis Data Relasional (MySQL)</li>
@@ -81,7 +90,12 @@
                 </div>
             </div>
         </section>
-    </div>
+    </main>
+
+    <!-- Scroll To Top Button -->
+    <button id="scroll-top" class="pixel-btn scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script src="../js/script.js"></script>
 </body>

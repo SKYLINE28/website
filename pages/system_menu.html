@@ -5,43 +5,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TwentyEgg | System Menu</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="System navigation for the portfolio of Damar Rifaldi Mutakin aka TwentyEgg.">
+    <meta name="author" content="Damar Rifaldi Mutakin">
+    <meta property="og:title" content="TwentyEgg | System Menu">
+    <meta property="og:description" content="Navigate the TwentyEgg retro portfolio">
+    <meta property="og:image" content="../assets/images/avatar.jpg">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#D97757">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="../css/style.css">
+    <script>
+        let currentTheme = localStorage.getItem('theme');
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('theme')) {
+            currentTheme = urlParams.get('theme');
+            try { localStorage.setItem('theme', currentTheme); } catch (e) { }
+        } else if (!currentTheme) {
+            currentTheme = 'light';
+        }
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    </script>
 </head>
 
 <body>
-    <button id="theme-toggle" class="pixel-btn theme-toggle" aria-label="Toggle Dark Mode">
-        <i class="fa-solid fa-moon"></i>
-    </button>
-    <a href="../index.html" class="pixel-btn back-btn" aria-label="Go Back">
-        <i class="fa-solid fa-arrow-left"></i>&nbsp; Kembali
-    </a>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
 
-    <div class="container support-container">
-        <section class="pixel-panel feature-box" style="width: 100%; max-width: 500px; margin: 0 auto; text-align: center;">
-            <div class="panel-header">
+    <nav class="floating-menu-container">
+        <button id="main-menu-btn" class="pixel-btn main-menu-btn" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div id="drop-menu" class="pixel-panel drop-menu">
+            <button id="theme-toggle" class="pixel-btn menu-item">
+                <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
+            </button>
+            <a href="../index.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="courses.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-book"></i> Courses
+            </a>
+            <a href="support.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i> Support
+            </a>
+        </div>
+    </nav>
+
+    <div class="container container-center flex-center" style="min-height: 80vh;">
+        <main class="system-menu-panel reveal" style="width: 100%;">
+            <section class="pixel-panel flex-center text-center" style="flex-direction: column;">
+                <div class="panel-header" style="width: 100%;">
                     <h3>> SYSTEM_MENU.exe</h3>
                 </div>
-                <div class="panel-body">
-                    <i class="fa-solid fa-server" style="font-size: 3rem; margin-bottom: 1rem; color: var(--accent-color);"></i>
-                    <p style="margin-bottom: 2rem;">Pilih direktori yang ingin Anda akses:</p>
+                <div class="panel-body flex-center" style="flex-direction: column; width: 100%;">
+                    <i class="fa-solid fa-terminal system-menu-icon" aria-hidden="true"></i>
+                    <p class="menu-desc mb-3">Please select an executable from the directory below:</p>
 
-                    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 400px; margin: 0 auto;">
-                        <a href="support.html" class="pixel-btn" style="justify-content: center; padding: 1.5rem;">
-                            <i class="fa-solid fa-hand-holding-dollar" style="font-size: 2rem; margin-right: 1rem;"></i> 
-                            SUPPORT_CENTER.exe
+                    <div class="system-menu-buttons">
+                        <a href="../index.html" class="pixel-btn menu-btn-large action-btn">
+                            <i class="fa-solid fa-house"></i> HOME.DIR
                         </a>
-                        <a href="likes.html" class="pixel-btn" style="justify-content: center; padding: 1.5rem;">
-                            <i class="fa-solid fa-heart" style="font-size: 2rem; margin-right: 1rem;"></i> 
-                            FAVORITES_LOG.txt
+                        <a href="courses.html" class="pixel-btn menu-btn-large">
+                            <i class="fa-solid fa-book"></i> COURSES.DAT
+                        </a>
+                        <a href="support.html" class="pixel-btn menu-btn-large">
+                            <i class="fa-solid fa-hand-holding-dollar"></i> SUPPORT.SYS
                         </a>
                     </div>
                 </div>
-        </section>
+            </section>
+        </main>
     </div>
+
+    <!-- Scroll To Top Button -->
+    <button id="scroll-top" class="pixel-btn scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script src="../js/script.js"></script>
 </body>

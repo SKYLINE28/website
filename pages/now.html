@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwentyEgg | /now</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="What TwentyEgg is doing right now — current status, learning, building, and listening to.">
+    <meta name="author" content="Damar Rifaldi Mutakin">
+    <meta property="og:title" content="TwentyEgg | /now">
+    <meta property="og:description" content="What I'm doing now — current status update">
+    <meta property="og:image" content="../assets/images/avatar.jpg">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#D97757">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        let currentTheme = localStorage.getItem('theme');
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('theme')) {
+            currentTheme = urlParams.get('theme');
+            try { localStorage.setItem('theme', currentTheme); } catch (e) { }
+        } else if (!currentTheme) {
+            currentTheme = 'light';
+        }
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    </script>
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <nav class="floating-menu-container">
+        <button id="main-menu-btn" class="pixel-btn main-menu-btn" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div id="drop-menu" class="pixel-panel drop-menu">
+            <button id="theme-toggle" class="pixel-btn menu-item">
+                <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
+            </button>
+            <a href="../index.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="courses.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-book"></i> Courses
+            </a>
+            <a href="now.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-satellite-dish"></i> /now
+            </a>
+            <a href="support.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i> Support
+            </a>
+        </div>
+    </nav>
+
+    <main class="container" style="max-width: 700px; margin: 0 auto;">
+        <section class="pixel-panel reveal mt-4">
+            <div class="panel-header">
+                <h1 style="font-size: 1.6rem;">> NOW.exe <span class="now-status-blink">[LIVE]</span></h1>
+                <p style="font-size: 1.1rem; color: var(--accent-color); margin-top: 0.3rem;">What I'm doing right now</p>
+            </div>
+            <div class="panel-body">
+
+                <div class="now-section">
+                    <span class="now-label"><i class="fa-solid fa-signal"></i> CURRENT_STATUS</span>
+                    <div class="now-content">
+                        <p>📍 Based in Lampung, Indonesia</p>
+                        <p>🎓 Studying Informatics Engineering @ ITERA</p>
+                        <p>💻 Actively building projects & learning new tech</p>
+                        <p>☕ Fueled by coffee and curiosity</p>
+                    </div>
+                </div>
+
+                <div class="now-section">
+                    <span class="now-label"><i class="fa-solid fa-book-open"></i> LEARNING_NOW</span>
+                    <div class="now-content">
+                        <ul>
+                            <li>JavaScript deep-dive — async patterns, DOM mastery</li>
+                            <li>React.js fundamentals — component architecture</li>
+                            <li>Data Structures & Algorithms in C++</li>
+                            <li>Godot 4 game engine — 2D platformer development</li>
+                            <li>UI/UX design principles & Figma workflows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="now-section">
+                    <span class="now-label"><i class="fa-solid fa-hammer"></i> BUILDING_NOW</span>
+                    <div class="now-content">
+                        <ul>
+                            <li>This retro pixel portfolio (never done iterating!)</li>
+                            <li>A terminal-styled quiz app with leaderboards</li>
+                            <li>2D platformer prototype in Godot 4</li>
+                            <li>Python CLI tool for dev workflow automation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="now-section">
+                    <span class="now-label"><i class="fa-solid fa-headphones"></i> LISTENING_TO</span>
+                    <div class="now-content">
+                        <ul>
+                            <li>Lo-fi beats for focus sessions</li>
+                            <li>Chiptune / 8-bit music playlists</li>
+                            <li>Tech podcasts — web dev & indie game dev</li>
+                            <li>Synthwave while coding at night 🌙</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="now-timestamp">Last updated: April 2026</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll To Top Button -->
+    <button id="scroll-top" class="pixel-btn scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/scroll.js"></script>
+    <script src="../js/reveal.js"></script>
+    <script src="../js/particles.js"></script>
+    <script src="../js/fireworks.js"></script>
+    <script src="../js/mousetrail.js"></script>
+    <script src="../js/clipboard.js"></script>
+    <script src="../js/terminal.js"></script>
+    <script src="../js/konami.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

@@ -599,3 +599,294 @@ footer {
         bottom: 20px;
     }
 }
+
+
+/* =========================================
+   PROJECT EXPLORER
+   ========================================= */
+
+#dir-status-bar {
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    margin-top: 0.4rem;
+    letter-spacing: 1px;
+}
+
+#project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+#project-filters .filter-btn {
+    width: auto;
+    font-size: 1rem;
+    padding: 0.4rem 0.8rem;
+    min-height: 38px;
+}
+
+#project-filters .filter-btn.active {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+#project-search-bar {
+    display: flex;
+    align-items: center;
+    border: var(--border-width) solid var(--text-color);
+    background-color: var(--secondary-bg);
+    padding: 0.5rem 0.8rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 4px 4px 0px var(--text-color);
+    font-size: 1.3rem;
+}
+
+.search-label {
+    color: var(--accent-color);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+#project-search {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    color: var(--text-color);
+    width: 100%;
+    caret-color: var(--accent-color);
+}
+
+#project-search::placeholder {
+    color: var(--text-color);
+    opacity: 0.4;
+    animation: blink 0.8s step-end infinite;
+}
+
+#project-loading {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--accent-color);
+    padding: 2.5rem;
+    animation: loadingBlink 0.4s steps(2) infinite;
+    letter-spacing: 3px;
+}
+
+@keyframes loadingBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.15; }
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    padding: 2rem;
+    border: var(--border-width) dashed var(--text-color);
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* Card top row (title + [CLICK] hint) */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.card-expand-hint {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    opacity: 0.6;
+    white-space: nowrap;
+    transition: opacity 0.1s steps(2);
+}
+
+.project-card:hover .card-expand-hint {
+    opacity: 1;
+}
+
+/* Card entrance — stepped for retro feel */
+@keyframes cardEnter {
+    0%   { opacity: 0; transform: translateY(8px); }
+    25%  { opacity: 0.3; transform: translateY(6px); }
+    75%  { opacity: 0.85; transform: translateY(2px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.card-enter {
+    animation: cardEnter 0.24s steps(4) forwards;
+    opacity: 0;
+}
+
+
+/* =========================================
+   PROJECT DETAIL OVERLAY
+   ========================================= */
+
+.project-detail-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(42, 39, 36, 0.88);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: overlayIn 0.16s steps(4) forwards;
+}
+
+.project-detail-overlay[hidden] {
+    display: none;
+}
+
+@keyframes overlayIn {
+    0%   { opacity: 0; }
+    50%  { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.project-overlay-inner {
+    width: 100%;
+    max-width: 620px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Suppress the hover translate on the overlay panel */
+.project-overlay-inner:hover {
+    transform: none !important;
+    box-shadow: 8px 8px 0px var(--accent-color) !important;
+}
+
+.overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    border-bottom: var(--border-width) solid var(--text-color);
+    padding-bottom: 0.8rem;
+}
+
+#overlay-title {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.overlay-close-btn {
+    width: auto !important;
+    min-height: 36px;
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+}
+
+.overlay-terminal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.term-line {
+    font-size: 1.3rem;
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.term-prompt {
+    color: var(--accent-color);
+    white-space: nowrap;
+    min-width: 90px;
+}
+
+.term-desc {
+    font-size: 1.3rem;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1rem;
+    line-height: 1.6;
+    margin-top: 0.2rem;
+}
+
+.term-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.term-actions {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.term-actions .pixel-btn {
+    width: auto;
+    min-height: 40px;
+}
+
+.status-ok {
+    font-weight: bold;
+    border: 2px solid var(--text-color);
+    padding: 0.1rem 0.4rem;
+    font-size: 1.1rem;
+}
+
+
+/* =========================================
+   MOUSE TRAIL
+   ========================================= */
+
+.pixel-trail {
+    position: fixed;
+    pointer-events: none;
+    z-index: 8888;
+    animation: trailFade 400ms steps(4) forwards;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes trailFade {
+    0%   { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
+    33%  { opacity: 0.55; transform: translate(-50%, -50%) scale(0.7); }
+    66%  { opacity: 0.2;  transform: translate(-50%, -50%) scale(0.4); }
+    100% { opacity: 0;    transform: translate(-50%, -50%) scale(0); }
+}
+
+
+/* =========================================
+   PAGINATION
+   ========================================= */
+
+.project-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: var(--border-width) solid var(--text-color);
+}
+
+.pag-btn {
+    width: auto !important;
+    min-height: 38px;
+    padding: 0.4rem 1rem;
+    font-size: 1.1rem;
+}
+
+.pag-status {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    letter-spacing: 2px;
+    white-space: nowrap;
+    text-align: center;
+    flex: 1;
+}

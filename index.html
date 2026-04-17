@@ -197,41 +197,29 @@
                 </div>
             </section>
 
-            <!-- Projects Section -->
+            <!-- Projects Section — Dynamic Explorer -->
             <section id="projects" class="pixel-panel reveal mt-3">
                 <div class="panel-header">
-                    <h3>> PROJECTS_DIR.exe</h3>
+                    <h3>&gt; PROJECTS_DIR.exe</h3>
+                    <div id="dir-status-bar">C:\PROJECTS&gt; <span id="dir-filter-label">ALL_FILES.sh</span></div>
                 </div>
                 <div class="panel-body">
-                    <div class="projects-grid">
-                        <!-- Project 1 -->
-                        <article class="project-card">
-                            <h4>> PIXEL_PORTFOLIO.exe</h4>
-                            <p>A retro-themed brutalist portfolio built with vanilla HTML, CSS, and JS.</p>
-                            <div class="project-tags">
-                                <div class="tag highlight-tag">HTML</div>
-                                <div class="tag highlight-tag">CSS</div>
-                                <div class="tag highlight-tag">JS</div>
-                            </div>
-                            <div class="project-card-footer mt-2">
-                                <a href="https://github.com/SKYLINE28" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-brands fa-github"></i> CODE</a>
-                                <a href="#" class="pixel-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> DEMO</a>
-                            </div>
-                        </article>
-                        <!-- Project 2 -->
-                        <article class="project-card">
-                            <h4>> UNKNOWN_GAME.exe <span class="wip-badge">[WIP]</span></h4>
-                            <p>An upcoming 2D platformer game set in a cyber-dystopian world. Currently in early development.</p>
-                            <div class="project-tags">
-                                <div class="tag highlight-tag">C++</div>
-                                <div class="tag highlight-tag">GameDev</div>
-                            </div>
-                            <div class="project-card-footer mt-2">
-                                <button class="pixel-btn" disabled title="Coming Soon"><i class="fa-brands fa-github"></i> CODE</button>
-                                <button class="pixel-btn" disabled title="Coming Soon"><i class="fa-solid fa-arrow-up-right-from-square"></i> DEMO</button>
-                            </div>
-                        </article>
+                    <!-- Category Filters -->
+                    <div id="project-filters">
+                        <button class="pixel-btn filter-btn active" data-filter="all">ALL_FILES.sh</button>
+                        <button class="pixel-btn filter-btn" data-filter="web">WEB_APPS.exe</button>
+                        <button class="pixel-btn filter-btn" data-filter="game">GAMES.bin</button>
+                        <button class="pixel-btn filter-btn" data-filter="tool">TOOLS.dat</button>
                     </div>
+                    <!-- Terminal Search -->
+                    <div id="project-search-bar" role="search">
+                        <span class="search-label">[SEARCH]&gt;&nbsp;</span>
+                        <input id="project-search" type="text" placeholder="_" autocomplete="off" spellcheck="false" aria-label="Search projects">
+                    </div>
+                    <!-- Disk-read loading indicator -->
+                    <div id="project-loading" aria-live="polite" hidden>READING DISK... &#9619;&#9619;&#9618;&#9618;&#9617;&#9617;</div>
+                    <!-- JS-rendered project cards go here -->
+                    <div id="projects-grid" class="projects-grid"></div>
                 </div>
             </section>
 
@@ -267,6 +255,17 @@
     <button id="scroll-top" class="pixel-btn scroll-top-btn" aria-label="Scroll to top">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
+
+    <!-- Project Detail Overlay -->
+    <div id="project-overlay" class="project-detail-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-title" hidden>
+        <div class="project-overlay-inner pixel-panel">
+            <div class="overlay-header">
+                <span id="overlay-title" class="highlight"></span>
+                <button id="overlay-close" class="pixel-btn overlay-close-btn" aria-label="Close overlay">[X] CLOSE</button>
+            </div>
+            <div id="overlay-body" class="overlay-body"></div>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

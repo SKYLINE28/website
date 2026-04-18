@@ -1,63 +1,7 @@
 /* ===========================
    PROJECT EXPLORER
    =========================== */
-const PROJECTS_DATA = [
-    {
-        id: 'pixel-portfolio',
-        name: 'PIXEL_PORTFOLIO.exe',
-        desc: 'A retro-themed brutalist portfolio built with vanilla HTML, CSS, and JS.',
-        fullDesc: 'Personal portfolio website with a retro pixel-art/brutalist aesthetic. Features dark/light mode, gravity-physics fireworks, parallax pixel background, mouse trail effect, typewriter animation, and a dynamic project explorer. Zero dependencies — pure HTML, CSS, and JavaScript.',
-        tags: ['HTML', 'CSS', 'JS'],
-        category: 'web',
-        codeUrl: 'https://github.com/SKYLINE28',
-        demoUrl: null,
-        wip: false
-    },
-    {
-        id: 'unknown-game',
-        name: 'UNKNOWN_GAME.exe',
-        desc: 'An upcoming 2D platformer set in a cyber-dystopian world.',
-        fullDesc: 'A 2D side-scrolling platformer set in a neon-drenched cyber-dystopian world. Planned features: procedural level generation, hand-crafted pixel-art sprites, a chiptune soundtrack, and a deep lore system. Currently in pre-production and early prototyping phase.',
-        tags: ['C++', 'GameDev'],
-        category: 'game',
-        codeUrl: null,
-        demoUrl: null,
-        wip: true
-    },
-    {
-        id: 'retro-quiz',
-        name: 'RETRO_QUIZ.exe',
-        desc: 'A terminal-styled quiz app with multiple categories and a local leaderboard.',
-        fullDesc: 'Browser-based quiz game built entirely in vanilla JS with a retro terminal interface. Features 5 question categories, a time-pressure mechanic, and a persistent leaderboard stored in localStorage. Built as a deep-dive JavaScript learning exercise.',
-        tags: ['JS', 'HTML', 'CSS'],
-        category: 'web',
-        codeUrl: null,
-        demoUrl: null,
-        wip: true
-    },
-    {
-        id: 'task-runner',
-        name: 'TASK_RUNNER.bat',
-        desc: 'A CLI tool to automate repetitive developer workflow tasks.',
-        fullDesc: 'Command-line utility written in Python 3. Automates common dev tasks: opinionated Git commit formatting, file & folder scaffolding, and project bootstrapping from YAML templates. Designed to eliminate boilerplate friction from the daily dev workflow.',
-        tags: ['Python', 'CLI'],
-        category: 'tool',
-        codeUrl: null,
-        demoUrl: null,
-        wip: true
-    },
-    {
-        id: 'platformer-2d',
-        name: 'PLATFORMER_2D.bin',
-        desc: 'A pixel-art 2D platformer prototype built in Godot 4.',
-        fullDesc: 'Prototype 2D platformer built with Godot 4 Engine. Implements smooth coyote-time and jump-buffering mechanics, animated pixel-art sprites exported from Aseprite, tile-based level design, and a basic enemy AI using a state machine pattern. Currently exploring procedural dungeon room generation.',
-        tags: ['GDScript', 'Godot', 'GameDev'],
-        category: 'game',
-        codeUrl: null,
-        demoUrl: null,
-        wip: true
-    }
-];
+let PROJECTS_DATA = [];
 
 const FILTER_NAMES = {
     all: 'ALL_FILES.sh',
@@ -68,6 +12,20 @@ const FILTER_NAMES = {
 
 const PROJECTS_PER_PAGE = 3; // cards shown per page
 let projectCurrentPage = 1;
+
+async function loadProjectsData() {
+    try {
+        const response = await fetch('data/projects.json');
+        PROJECTS_DATA = await response.json();
+        renderProjects('all', '');
+    } catch (error) {
+        console.error('Error loading projects data:', error);
+        const grid = document.getElementById('projects-grid');
+        if (grid) {
+            grid.innerHTML = `<div class="no-results"><p>&gt; ERROR: Failed to load project data.</p></div>`;
+        }
+    }
+}
 
 function renderProjects(filter = 'all', query = '', page = 1) {
     const grid = document.getElementById('projects-grid');
@@ -241,7 +199,7 @@ function closeProjectOverlay() {
 const ProjectExplorer = (function () {
     function init() {
         // Initial render — show all projects
-        renderProjects('all', '');
+        loadProjectsData();
 
         // Filter button clicks
         document.querySelectorAll('.filter-btn').forEach(btn => {

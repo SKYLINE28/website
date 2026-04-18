@@ -32,6 +32,7 @@ Website ini adalah **portofolio pribadi** yang dirancang dengan estetika *Retro 
 -   **Responsive Design**: Tampilan yang optimal baik di perangkat mobile maupun desktop.
 -   **Interactive Elements**: Efek typewriter, scroll progress bar, dan animasi reveal yang halus.
 -   **Course & Support Pages**: Halaman tambahan untuk berbagi materi pembelajaran dan dukungan.
+-   **Dynamic Data**: Data proyek dimuat secara dinamis dari file JSON.
 
 ---
 
@@ -40,13 +41,14 @@ Website ini adalah **portofolio pribadi** yang dirancang dengan estetika *Retro 
 | Kategori | Teknologi |
 | :--- | :--- |
 | **Frontend** | HTML5, CSS3 (Custom Properties), JavaScript (Vanilla) |
+| **Data** | JSON (Dynamic Loading) |
 | **Fonts** | [VT323](https://fonts.google.com/specimen/VT323) (Google Fonts) |
 | **Icons** | Font Awesome 6.4.0 |
 | **Tools** | VS Code, Git, Figma |
 
 ---
 
-## 📂 Struktur Folder
+## 📂 Struktur Folder (Refactored)
 
 ```text
 .
@@ -55,9 +57,12 @@ Website ini adalah **portofolio pribadi** yang dirancang dengan estetika *Retro 
 │   └── images/        # Aset gambar dan avatar
 ├── css/
 │   └── style.css      # Logika styling utama (Retro Theme)
+├── data/
+│   └── projects.json  # Data proyek (JSON)
 ├── js/
-│   ├── progress.js    # Scroll progress logic
-│   └── script.js      # Interaktivitas utama & Theme toggle
+│   ├── core/          # Logika inti (Theme, Main)
+│   ├── components/    # Komponen UI (Nav, Projects, Terminal)
+│   └── effects/       # Efek visual (Particles, Fireworks, Scroll)
 ├── pages/
 │   ├── courses.html   # Halaman kursus/materi
 │   ├── support.html   # Halaman dukungan

@@ -32,7 +32,9 @@ Website ini adalah **portofolio pribadi** yang dirancang dengan estetika *Retro 
 -   **Responsive Design**: Tampilan yang optimal baik di perangkat mobile maupun desktop.
 -   **Interactive Elements**: Efek typewriter, scroll progress bar, dan animasi reveal yang halus.
 -   **Course & Support Pages**: Halaman tambahan untuk berbagi materi pembelajaran dan dukungan.
--   **Dynamic Data**: Data proyek dimuat secara dinamis dari file JSON.
+-   **Dynamic Data Loading**: Data proyek kini dimuat secara dinamis dari file JSON, memisahkan konten dari logika kode.
+-   **Modular Architecture**: Struktur kode JavaScript yang terorganisir ke dalam kategori Core, Components, dan Effects untuk kemudahan pemeliharaan.
+-   **Antigravity Refactoring**: Implementasi struktur folder yang bersih dan efisien untuk skalabilitas masa depan.
 
 ---
 
@@ -41,32 +43,35 @@ Website ini adalah **portofolio pribadi** yang dirancang dengan estetika *Retro 
 | Kategori | Teknologi |
 | :--- | :--- |
 | **Frontend** | HTML5, CSS3 (Custom Properties), JavaScript (Vanilla) |
-| **Data** | JSON (Dynamic Loading) |
+| **Data Management** | JSON (Dynamic Fetching) |
 | **Fonts** | [VT323](https://fonts.google.com/specimen/VT323) (Google Fonts) |
 | **Icons** | Font Awesome 6.4.0 |
 | **Tools** | VS Code, Git, Figma |
 
 ---
 
-## 📂 Struktur Folder (Refactored)
+## 📂 Struktur Folder Baru (Refactored)
+
+Struktur repositori telah diperbarui untuk meningkatkan organisasi file dan pemisahan data:
 
 ```text
 .
 ├── assets/
-│   ├── docs/          # Dokumen seperti CV
-│   └── images/        # Aset gambar dan avatar
+│   ├── docs/          # Dokumen seperti CV dan sertifikat
+│   └── images/        # Aset gambar, avatar, dan ikon
 ├── css/
 │   └── style.css      # Logika styling utama (Retro Theme)
 ├── data/
-│   └── projects.json  # Data proyek (JSON)
+│   └── projects.json  # Database proyek dalam format JSON (Dynamic Data)
 ├── js/
-│   ├── core/          # Logika inti (Theme, Main)
-│   ├── components/    # Komponen UI (Nav, Projects, Terminal)
-│   └── effects/       # Efek visual (Particles, Fireworks, Scroll)
+│   ├── core/          # Logika inti (Theme management, Main entry)
+│   ├── components/    # Komponen UI (Nav, Projects Explorer, Terminal)
+│   └── effects/       # Efek visual (Particles, Fireworks, Scroll animations)
 ├── pages/
-│   ├── courses.html   # Halaman kursus/materi
-│   ├── support.html   # Halaman dukungan
-│   └── system_menu.html
+│   ├── courses.html   # Halaman kursus/materi pembelajaran
+│   ├── now.html       # Halaman status /now
+│   ├── support.html   # Halaman dukungan dan donasi
+│   └── system_menu.html # Menu navigasi sistem
 └── index.html         # Halaman utama (Landing Page)
 ```
 

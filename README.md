@@ -1,3 +1,4 @@
+
 # 🥚 TwentyEgg | Personal Portfolio
 
 <div align="center">
@@ -10,6 +11,20 @@
     <a href="https://www.itera.ac.id/"><img src="https://img.shields.io/badge/University-ITERA-blue?style=flat-square&color=2A2724" alt="University"></a>
     <img src="https://img.shields.io/badge/Theme-Retro_Pixel-orange?style=flat-square&color=D97724" alt="Theme">
   </p>
+</div>
+
+---
+
+## ⚡ GitHub Stats
+
+<div align="center">
+  <a href="https://github.com/SKYLINE28">
+    <img src="https://github-readme-stats.vercel.app/api?username=SKYLINE28&show_icons=true&theme=synthwave&hide_border=true&count_private=true" alt="SKYLINE28 GitHub Stats"/>
+  </a>
+  <br/>
+  <a href="https://github.com/SKYLINE28">
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=SKYLINE28&layout=compact&theme=synthwave&hide_border=true" alt="Top Languages"/>
+  </a>
 </div>
 
 ---

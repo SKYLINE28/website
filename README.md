@@ -15,6 +15,24 @@
 
 ---
 
+## 🖼️ Dokumentasi Visual (Visual Documentation)
+
+Berikut adalah tampilan antarmuka dari website portofolio TwentyEgg:
+
+### 🏠 Halaman Utama (Home Page)
+Tampilan utama dengan estetika retro pixel yang menampilkan profil singkat dan daftar proyek.
+![Home Page](assets/images/screenshots/home.webp)
+
+### 🌓 Mode Gelap (Dark Mode)
+Dukungan tema gelap untuk kenyamanan penggunaan di malam hari.
+![Dark Mode](assets/images/screenshots/dark_mode.webp)
+
+### ☰ Menu Navigasi (System Menu)
+Menu navigasi bergaya sistem operasi klasik untuk akses cepat ke berbagai halaman.
+![System Menu](assets/images/screenshots/menu.webp)
+
+---
+
 ## 🎯 Tujuan Proyek (Project Purpose)
 
 Website ini adalah **portofolio pribadi** yang dirancang dengan estetika *Retro Pixel / Brutalist* untuk merepresentasikan identitas digital saya sebagai **TwentyEgg**. Tujuan utamanya adalah:
@@ -51,53 +69,63 @@ Website ini adalah **portofolio pribadi** yang dirancang dengan estetika *Retro 
 
 ---
 
-## 📂 Struktur Folder Baru (Refactored)
+## 📂 Struktur Folder (Project Structure)
 
-Struktur repositori telah diperbarui untuk meningkatkan organisasi file dan pemisahan data:
+Struktur repositori yang terorganisir untuk skalabilitas:
 
 ```text
 .
 ├── assets/
 │   ├── docs/          # Dokumen seperti CV dan sertifikat
 │   └── images/        # Aset gambar, avatar, dan ikon
+│       └── screenshots/ # Dokumentasi visual website
 ├── css/
 │   └── style.css      # Logika styling utama (Retro Theme)
 ├── data/
-│   └── projects.json  # Database proyek dalam format JSON (Dynamic Data)
+│   └── projects.json  # Database proyek dalam format JSON
 ├── js/
 │   ├── core/          # Logika inti (Theme management, Main entry)
 │   ├── components/    # Komponen UI (Nav, Projects Explorer, Terminal)
 │   └── effects/       # Efek visual (Particles, Fireworks, Scroll animations)
 ├── pages/
+│   ├── blog.html      # Halaman blog
 │   ├── courses.html   # Halaman kursus/materi pembelajaran
 │   ├── now.html       # Halaman status /now
 │   ├── support.html   # Halaman dukungan dan donasi
-│   └── system_menu.html # Menu navigasi sistem
+│   └── uses.html      # Halaman peralatan yang digunakan
 └── index.html         # Halaman utama (Landing Page)
 ```
 
 ---
 
-## 🚀 Mendapatkan Memulai (Getting Started)
+## 🚀 Cara Menjalankan (Getting Started)
 
 Untuk menjalankan proyek ini secara lokal:
 
-1. Clone repositori ini: `git clone https://github.com/SKYLINE28/website-main.git`
-2. Jalankan server lokal. Jika menggunakan Node.js (dengan menggunakan package.json yang disediakan):
+1. Clone repositori ini:
    ```bash
-   npm run dev
+   git clone https://github.com/SKYLINE28/website.git
    ```
-   Atau secara otomatis menggunakan Python:
+2. Masuk ke direktori proyek:
    ```bash
-   python -m http.server 8000
+   cd website
    ```
-3. Buka browser pada `http://localhost:8000` (atau port lain yang tertera di terminal).
+3. Jalankan server lokal:
+   - Menggunakan Python:
+     ```bash
+     python -m http.server 8000
+     ```
+   - Menggunakan Node.js (jika terinstall):
+     ```bash
+     npm run dev
+     ```
+4. Buka browser pada `http://localhost:8000`.
 
 ---
 
 ## 📈 Lighthouse Score
 
-Website ini dioptimasi penuh tanpa framework tambahan (Vanilla HTML/CSS/JS) dengan memastikan performa & standar yang optimal pada report Lighthouse:
+Website ini dioptimasi penuh tanpa framework tambahan (Vanilla HTML/CSS/JS) dengan skor Lighthouse yang optimal:
 - **Performance**: 100
 - **Accessibility**: 100
 - **Best Practices**: 100

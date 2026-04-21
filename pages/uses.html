@@ -4,29 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TwentyEgg | Courses</title>
-    
+    <title>TwentyEgg | /uses</title>
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Portfolio of Damar Rifaldi Mutakin aka TwentyEgg — Informatics student at ITERA, building websites and games.">
+    <meta name="description" content="What TwentyEgg uses for development: hardware, software, and services.">
     <meta name="author" content="Damar Rifaldi Mutakin">
-    <meta name="keywords" content="Damar Rifaldi Mutakin, TwentyEgg, Courses, Portfolio, Web Developer, ITERA">
-    <link rel="canonical" href="https://twentyegg.com/pages/courses.html">
+    <meta name="keywords" content="Damar Rifaldi Mutakin, TwentyEgg, Uses, Setup, Hardware, Software, Developer Tools">
+    <link rel="canonical" href="https://twentyegg.com/pages/uses.html">
     <link rel="manifest" href="../manifest.json">
-    <meta property="og:title" content="TwentyEgg | Courses">
-    <meta property="og:description" content="Portfolio of Damar Rifaldi Mutakin — web developer & game enthusiast">
+    <meta property="og:title" content="TwentyEgg | /uses">
+    <meta property="og:description" content="Hardware and software I use daily">
     <meta property="og:image" content="https://twentyegg.com/assets/images/avatar.jpg">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#D97757">
     <meta name="color-scheme" content="light dark">
-    
+
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/print.css" media="print">
     <script>
@@ -75,53 +75,14 @@
         </div>
     </nav>
 
-    <main class="container courses-panel mt-4 reveal">
-        <section class="pixel-panel flex-center" style="flex-direction: column;">
-            <div class="panel-header" style="width: 100%;">
-                <h3>> ACTIVE_COURSES.exe</h3>
+    <main class="container" style="max-width: 700px; margin: 0 auto; min-height: 80vh;">
+        <section class="pixel-panel reveal mt-4">
+            <div class="panel-header">
+                <h1 style="font-size: 1.6rem;">> USES.exe</h1>
+                <p style="font-size: 1.1rem; color: var(--accent-color); margin-top: 0.3rem;">Tools, Hardware & Software</p>
             </div>
-            <div class="panel-body text-left">
-                <p class="mb-3">Berikut adalah beberapa rekomendasi platform kursus dan pembelajaran online (gratis & berbayar) untuk meningkatkan skill programming Anda:</p>
-                <div class="grid-2">
-                    <div class="favorite-category">
-                        <h4 class="mb-1 highlight"><i class="fa-solid fa-star"></i> PLATFORM REKOMENDASI</h4>
-                        <ul class="pixel-list">
-                            <li>
-                                <span class="bullet">■</span> 
-                                <a href="https://www.dicoding.com/" target="_blank" rel="noopener noreferrer" class="highlight text-decoration-underline">Dicoding Indonesia</a>
-                            </li>
-                            <li>
-                                <span class="bullet">■</span> 
-                                <a href="https://wpucourse.id/" target="_blank" rel="noopener noreferrer" class="highlight text-decoration-underline">WPU Course</a>
-                            </li>
-                            <li>
-                                <span class="bullet">■</span> 
-                                <a href="https://www.course-net.com/" target="_blank" rel="noopener noreferrer" class="highlight text-decoration-underline">Course-Net</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="favorite-category">
-                        <h4 class="mb-1 highlight"><i class="fa-solid fa-gift"></i> BELAJAR GRATIS (FREE)</h4>
-                        <ul class="pixel-list">
-                            <li>
-                                <span class="bullet">■</span> 
-                                <a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer" class="highlight text-decoration-underline">W3Schools</a>
-                            </li>
-                            <li>
-                                <span class="bullet">■</span> 
-                                <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="highlight text-decoration-underline">freeCodeCamp</a>
-                            </li>
-                            <li>
-                                <span class="bullet">■</span> 
-                                <a href="https://codesaya.com/" target="_blank" rel="noopener noreferrer" class="highlight text-decoration-underline">CodeSaya</a>
-                            </li>
-                            <li>
-                                <span class="bullet">■</span> 
-                                <a href="https://www.youtube.com/@sandhikagalihWPU" target="_blank" rel="noopener noreferrer" class="highlight text-decoration-underline">YouTube: WPU</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="panel-body" id="uses-content">
+                <p style="white-space: pre-wrap; animation: blink 1s infinite alternate; color: var(--accent-color);">FETCHING DATA...</p>
             </div>
         </section>
     </main>
@@ -147,6 +108,50 @@
     <script src="../js/effects/mousetrail.js" defer></script>
     <script src="../js/effects/clipboard.js" defer></script>
     <script src="../js/effects/konami.js" defer></script>
+
+    <!-- Uses Data Fetcher -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('../data/uses.json')
+                .then(r => r.json())
+                .then(data => {
+                    const container = document.getElementById('uses-content');
+                    container.innerHTML = '';
+                    
+                    const icons = {
+                        hardware: '<i class="fa-solid fa-microchip"></i>',
+                        software: '<i class="fa-brands fa-windows"></i>',
+                        services: '<i class="fa-solid fa-cloud"></i>'
+                    };
+
+                    for (const [category, items] of Object.entries(data)) {
+                        const section = document.createElement('div');
+                        section.className = 'now-section';
+                        
+                        const label = document.createElement('span');
+                        label.className = 'now-label';
+                        label.innerHTML = `${icons[category] || '>'} ${category.toUpperCase()}`;
+                        section.appendChild(label);
+                        
+                        const content = document.createElement('div');
+                        content.className = 'now-content';
+                        const ul = document.createElement('ul');
+                        items.forEach(item => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<strong>${item.name}</strong> <span style="opacity:0.8; font-size:1.1rem; display:block; padding-left:1.2rem;">- ${item.desc}</span>`;
+                            ul.appendChild(li);
+                        });
+                        content.appendChild(ul);
+                        
+                        section.appendChild(content);
+                        container.appendChild(section);
+                    }
+                })
+                .catch(() => {
+                    document.getElementById('uses-content').innerHTML = '<p>&gt; ERROR: Failed to load USES.exe.</p>';
+                });
+        });
+    </script>
 </body>
 
 </html>

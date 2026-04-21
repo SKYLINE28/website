@@ -7,7 +7,7 @@
         "tags": ["HTML", "CSS", "JS"],
         "category": "web",
         "codeUrl": "https://github.com/SKYLINE28",
-        "demoUrl": "http://localhost:8000/index.html",
+        "demoUrl": null,
         "wip": false
     },
     {

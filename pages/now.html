@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
@@ -9,11 +9,15 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="What TwentyEgg is doing right now — current status, learning, building, and listening to.">
     <meta name="author" content="Damar Rifaldi Mutakin">
+    <meta name="keywords" content="Damar Rifaldi Mutakin, TwentyEgg, Now Page, Current Status, ITERA">
+    <link rel="canonical" href="https://twentyegg.com/pages/now.html">
+    <link rel="manifest" href="../manifest.json">
     <meta property="og:title" content="TwentyEgg | /now">
     <meta property="og:description" content="What I'm doing now — current status update">
-    <meta property="og:image" content="../assets/images/avatar.jpg">
+    <meta property="og:image" content="https://twentyegg.com/assets/images/avatar.jpg">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#D97757">
+    <meta name="color-scheme" content="light dark">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
 
@@ -24,6 +28,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/print.css" media="print">
     <script>
         let currentTheme = localStorage.getItem('theme');
         const urlParams = new URLSearchParams(window.location.search);
@@ -31,7 +36,7 @@
             currentTheme = urlParams.get('theme');
             try { localStorage.setItem('theme', currentTheme); } catch (e) { }
         } else if (!currentTheme) {
-            currentTheme = 'light';
+            currentTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
         document.documentElement.setAttribute('data-theme', currentTheme);
     </script>
@@ -57,6 +62,12 @@
             </a>
             <a href="now.html" class="pixel-btn menu-item">
                 <i class="fa-solid fa-satellite-dish"></i> /now
+            </a>
+            <a href="uses.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-toolbox"></i> /uses
+            </a>
+            <a href="blog.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-pen-nib"></i> Blog
             </a>
             <a href="support.html" class="pixel-btn menu-item">
                 <i class="fa-solid fa-hand-holding-dollar"></i> Support

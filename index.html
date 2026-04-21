@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
@@ -9,11 +9,30 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="Portfolio of Damar Rifaldi Mutakin aka TwentyEgg â€” Informatics student at ITERA, building websites and games.">
     <meta name="author" content="Damar Rifaldi Mutakin">
+    <meta name="keywords" content="Damar Rifaldi Mutakin, TwentyEgg, Portfolio, Web Developer, ITERA, Game Developer, Retro Website, Pixel Art">
+    <link rel="canonical" href="https://twentyegg.com/">
+    <link rel="manifest" href="manifest.json">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Damar Rifaldi Mutakin",
+      "alternateName": "TwentyEgg",
+      "jobTitle": "Web Developer",
+      "url": "https://twentyegg.com",
+      "sameAs": [
+        "https://github.com/SKYLINE28",
+        "https://www.instagram.com/darimu.mar",
+        "https://youtube.com/@GFLINE28"
+      ]
+    }
+    </script>
     <meta property="og:title" content="TwentyEgg | Portfolio">
     <meta property="og:description" content="Portfolio of Damar Rifaldi Mutakin â€” web developer & game enthusiast">
-    <meta property="og:image" content="assets/images/avatar.jpg">
+    <meta property="og:image" content="https://twentyegg.com/assets/images/avatar.jpg">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#D97757">
+    <meta name="color-scheme" content="light dark">
     
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>ðŸ¥š</text></svg>">
     
@@ -25,6 +44,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
     <script>
         // Prevent FOUC and handle file:// protocol theme sharing
         let currentTheme = localStorage.getItem('theme');
@@ -33,7 +53,7 @@
             currentTheme = urlParams.get('theme');
             try { localStorage.setItem('theme', currentTheme); } catch(e){}
         } else if (!currentTheme) {
-            currentTheme = 'light';
+            currentTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         }
         document.documentElement.setAttribute('data-theme', currentTheme);
     </script>
@@ -42,6 +62,9 @@
 <body>
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
+    
+    <!-- Mobile Section Scroll Indicator -->
+    <div id="section-indicator" class="section-indicator hidden-desktop"></div>
 
     <nav class="floating-menu-container">
         <button id="main-menu-btn" class="pixel-btn main-menu-btn" aria-label="Open Menu">
@@ -60,6 +83,12 @@
             <a href="pages/now.html" class="pixel-btn menu-item">
                 <i class="fa-solid fa-satellite-dish"></i> /now
             </a>
+            <a href="pages/uses.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-toolbox"></i> /uses
+            </a>
+            <a href="pages/blog.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-pen-nib"></i> Blog
+            </a>
             <a href="pages/support.html" class="pixel-btn menu-item">
                 <i class="fa-solid fa-hand-holding-dollar"></i> Support
             </a>
@@ -76,7 +105,8 @@
                          class="avatar"
                          width="160"
                          height="160"
-                         loading="eager">
+                         loading="eager"
+                         fetchpriority="high">
                 </div>
                 <div class="hero-text text-left">
                     <h1>Damar Rifaldi Mutakin</h1>
@@ -247,8 +277,8 @@
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <!-- Disk-read loading indicator -->
-                    <div id="project-loading" aria-live="polite" hidden>READING DISK... &#9619;&#9619;&#9618;&#9618;&#9617;&#9617;</div>
+                    <!-- Disk-read loading indicator (Skeleton container) -->
+                    <div id="project-loading" aria-live="polite" hidden></div>
                     <!-- JS-rendered project cards go here -->
                     <div id="projects-grid" class="projects-grid"></div>
                 </div>

@@ -4,7 +4,8 @@
 const ThemeManager = (function () {
     function init() {
         const themeToggle = document.getElementById('theme-toggle');
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 
+            (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
 
         if (themeToggle) {
             if (currentTheme === 'dark') {

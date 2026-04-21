@@ -13,8 +13,12 @@ const PROJECTS_PER_PAGE = 3; // cards shown per page
 let projectCurrentPage = 1;
 
 async function loadProjectsData() {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+    
     try {
-        const response = await fetch('data/projects.json');
+        const response = await fetch('data/projects.json', { signal: controller.signal });
+        clearTimeout(timeoutId);
         PROJECTS_DATA = await response.json();
         document.dispatchEvent(
             new CustomEvent('projectsLoaded', { detail: PROJECTS_DATA })
@@ -48,14 +52,25 @@ function renderProjects(filter = 'all', query = '', page = 1) {
     if (filterLabel) filterLabel.textContent = FILTER_NAMES[filter] || 'ALL_FILES.sh';
 
     // Show loading, clear grid, remove any old pagination
-    if (loadingEl) loadingEl.hidden = false;
+    if (loadingEl) {
+        loadingEl.hidden = false;
+        loadingEl.className = 'projects-grid';
+        loadingEl.innerHTML = `
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+        `;
+    }
     grid.innerHTML = '';
     grid.style.display = 'none';
     document.getElementById('project-pagination')?.remove();
 
-    // Simulate disk read delay for retro feel
     setTimeout(() => {
-        if (loadingEl) loadingEl.hidden = true;
+        if (loadingEl) {
+            loadingEl.hidden = true;
+            loadingEl.innerHTML = '';
+            loadingEl.className = '';
+        }
         grid.style.display = '';
 
         const q = query.toLowerCase().trim();

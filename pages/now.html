@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwentyEgg | /now</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="What TwentyEgg is doing right now — current status, learning, building, and listening to.">
+    <meta name="author" content="Damar Rifaldi Mutakin">
+    <meta name="keywords" content="Damar Rifaldi Mutakin, TwentyEgg, Now Page, Current Status, ITERA">
+    <link rel="canonical" href="https://twentyegg.com/pages/now.html">
+    <link rel="manifest" href="../manifest.json">
+    <meta property="og:title" content="TwentyEgg | /now">
+    <meta property="og:description" content="What I'm doing now — current status update">
+    <meta property="og:image" content="https://twentyegg.com/assets/images/avatar.jpg">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#D97757">
+    <meta name="color-scheme" content="light dark">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/print.css" media="print">
+    <script>
+        let currentTheme = localStorage.getItem('theme');
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('theme')) {
+            currentTheme = urlParams.get('theme');
+            try { localStorage.setItem('theme', currentTheme); } catch (e) { }
+        } else if (!currentTheme) {
+            currentTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    </script>
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <nav class="floating-menu-container">
+        <button id="main-menu-btn" class="pixel-btn main-menu-btn" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div id="drop-menu" class="pixel-panel drop-menu">
+            <button id="theme-toggle" class="pixel-btn menu-item">
+                <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
+            </button>
+            <a href="../index.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="courses.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-book"></i> Courses
+            </a>
+            <a href="now.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-satellite-dish"></i> /now
+            </a>
+            <a href="uses.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-toolbox"></i> /uses
+            </a>
+            <a href="blog.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-pen-nib"></i> Blog
+            </a>
+            <a href="support.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i> Support
+            </a>
+        </div>
+    </nav>
+
+    <main class="container" style="max-width: 700px; margin: 0 auto;">
+        <section class="pixel-panel reveal mt-4">
+            <div class="panel-header">
+                <h1 style="font-size: 1.6rem;">> NOW.exe <span class="now-status-blink">[LIVE]</span></h1>
+                <p style="font-size: 1.1rem; color: var(--accent-color); margin-top: 0.3rem;">What I'm doing right now</p>
+            </div>
+            <div class="panel-body">
+
+                <div class="now-section">
+                    <span class="now-label"><i class="fa-solid fa-signal"></i> CURRENT_STATUS</span>
+                    <div class="now-content">
+                        <p>📍 Based in Lampung, Indonesia</p>
+                        <p>🎓 Studying Informatics Engineering @ ITERA</p>
+                        <p>💻 Actively building projects & learning new tech</p>
+                        <p>🍵 Fueled by matcha and snacks</p>
+                    </div>
+                </div>
+
+                <div class="now-section">
+                    <span class="now-label"><i class="fa-solid fa-book-open"></i> LEARNING_NOW</span>
+                    <div class="now-content">
+                        <ul>
+                            <li>HTML/CSS Fundamental</li>
+                            <li>Godot 4</li>
+                            <li>Data Structures & Algorithms in C++</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="now-section">
+                    <span class="now-label"><i class="fa-solid fa-hammer"></i> BUILDING_NOW</span>
+                    <div class="now-content">
+                        <ul>
+                            <li>2D school-themed life sim in Godot (Stardew Valley style)</li>
+                            <li>This retro pixel portfolio</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="now-section">
+                    <span class="now-label"><i class="fa-solid fa-headphones"></i> LISTENING_TO</span>
+                    <div class="now-content">
+                        <ul>
+                            <li>Bruno Mars</li>
+                            <li>Taylor Swift</li>
+                            <li>Indonesian songs</li>
+                            <li>English songs</li>
+                            <li>Anime & K-Drama songs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p class="now-timestamp">Last updated: April 2026</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scroll To Top Button -->
+    <button id="scroll-top" class="pixel-btn scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i> <span class="hidden-mobile-text">TOP</span>
+    </button>
+
+    <!-- Core Scripts — NO defer (critical) -->
+    <script src="../js/core/theme.js"></script>
+    <script src="../js/core/main.js"></script>
+    
+    <!-- Component Scripts — defer -->
+    <script src="../js/components/nav.js" defer></script>
+    <script src="../js/components/terminal.js" defer></script>
+    
+    <!-- Effect Scripts — defer -->
+    <script src="../js/effects/scroll.js" defer></script>
+    <script src="../js/effects/reveal.js" defer></script>
+    <script src="../js/effects/particles.js" defer></script>
+    <script src="../js/effects/fireworks.js" defer></script>
+    <script src="../js/effects/mousetrail.js" defer></script>
+    <script src="../js/effects/clipboard.js" defer></script>
+    <script src="../js/effects/konami.js" defer></script>
+</body>
+
+</html>

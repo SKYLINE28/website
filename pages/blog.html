@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwentyEgg | Blog</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Development log and technical articles by TwentyEgg.">
+    <meta name="author" content="Damar Rifaldi Mutakin">
+    <meta name="keywords" content="Damar Rifaldi Mutakin, TwentyEgg, Blog, Devlog, Articles, ITERA">
+    <link rel="canonical" href="https://twentyegg.com/pages/blog.html">
+    <link rel="manifest" href="../manifest.json">
+    <meta property="og:title" content="TwentyEgg | Blog">
+    <meta property="og:description" content="Technical devlogs and articles">
+    <meta property="og:image" content="https://twentyegg.com/assets/images/avatar.jpg">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#D97757">
+    <meta name="color-scheme" content="light dark">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥚</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/print.css" media="print">
+    <script>
+        let currentTheme = localStorage.getItem('theme');
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('theme')) {
+            currentTheme = urlParams.get('theme');
+            try { localStorage.setItem('theme', currentTheme); } catch (e) { }
+        } else if (!currentTheme) {
+            currentTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    </script>
+</head>
+
+<body>
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
+    <nav class="floating-menu-container">
+        <button id="main-menu-btn" class="pixel-btn main-menu-btn" aria-label="Open Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div id="drop-menu" class="pixel-panel drop-menu">
+            <button id="theme-toggle" class="pixel-btn menu-item">
+                <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
+            </button>
+            <a href="../index.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="courses.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-book"></i> Courses
+            </a>
+            <a href="now.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-satellite-dish"></i> /now
+            </a>
+            <a href="uses.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-toolbox"></i> /uses
+            </a>
+            <a href="blog.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-pen-nib"></i> Blog
+            </a>
+            <a href="support.html" class="pixel-btn menu-item">
+                <i class="fa-solid fa-hand-holding-dollar"></i> Support
+            </a>
+        </div>
+    </nav>
+
+    <div class="container container-center flex-center" style="min-height: 80vh;">
+        <main class="system-menu-panel reveal" style="width: 100%;">
+            <section class="pixel-panel flex-center text-center" style="flex-direction: column;">
+                <div class="panel-header" style="width: 100%;">
+                    <h3>> DEVLOG.sh</h3>
+                </div>
+                <div class="panel-body flex-center" style="flex-direction: column; width: 100%; padding: 3rem 1rem;">
+                    <i class="fa-solid fa-code system-menu-icon" aria-hidden="true" style="font-size: 5rem; animation: textBlink 1.5s infinite alternate;"></i>
+                    <h2 class="highlight mt-3" style="font-size: 2.8rem; animation: textBlink 1.5s infinite alternate;">[COMING_SOON.exe]</h2>
+                    <p class="mt-2 text-center" style="max-width: 400px; margin: 0 auto;">This module is currently off-grid. Please boot up later to read the devlogs and technical write-ups.</p>
+                    
+                    <a href="../index.html" class="pixel-btn mt-4 action-btn" style="width: auto; padding-left: 2rem; padding-right: 2rem;">
+                        <i class="fa-solid fa-arrow-left"></i> SYSTEM REBOOT
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scroll To Top Button -->
+    <button id="scroll-top" class="pixel-btn scroll-top-btn" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i> <span class="hidden-mobile-text">TOP</span>
+    </button>
+
+    <!-- Core Scripts — NO defer (critical) -->
+    <script src="../js/core/theme.js"></script>
+    <script src="../js/core/main.js"></script>
+    
+    <!-- Component Scripts — defer -->
+    <script src="../js/components/nav.js" defer></script>
+    <script src="../js/components/terminal.js" defer></script>
+    
+    <!-- Effect Scripts — defer -->
+    <script src="../js/effects/scroll.js" defer></script>
+    <script src="../js/effects/reveal.js" defer></script>
+    <script src="../js/effects/particles.js" defer></script>
+    <script src="../js/effects/fireworks.js" defer></script>
+    <script src="../js/effects/mousetrail.js" defer></script>
+    <script src="../js/effects/clipboard.js" defer></script>
+    <script src="../js/effects/konami.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+/* Print-friendly view */
+@media print {
+    body {
+        background-color: white !important;
+        color: black !important;
+        font-size: 12pt;
+    }
+
+    /* Sembunyikan elemen dekoratif dan navigasi */
+    .floating-menu-container,
+    #scroll-progress,
+    #scroll-top,
+    .pixel-particle,
+    #bg-pixels,
+    .socials,
+    .support-container,
+    #project-filters,
+    #project-search-bar,
+    .project-pagination,
+    button.pixel-btn,
+    .overlay-close-btn {
+        display: none !important;
+    }
+
+    .pixel-panel {
+        box-shadow: none !important;
+        border: 2px solid black !important;
+        transform: none !important;
+        margin-bottom: 2rem !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .container {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    a {
+        text-decoration: underline !important;
+        color: black !important;
+    }
+}

@@ -1,0 +1,24 @@
+[
+    {
+        "id": "pixel-portfolio",
+        "name": "PIXEL_PORTFOLIO.exe",
+        "desc": "This retro pixel portfolio",
+        "fullDesc": "Personal portfolio website with a retro pixel-art/brutalist aesthetic. Features dark/light mode, gravity-physics fireworks, parallax pixel background, mouse trail effect, typewriter animation, and a dynamic project explorer. Zero dependencies — pure HTML, CSS, and JavaScript.",
+        "tags": ["HTML", "CSS", "JS"],
+        "category": "web",
+        "codeUrl": "https://github.com/SKYLINE28",
+        "demoUrl": null,
+        "wip": false
+    },
+    {
+        "id": "school-life-sim",
+        "name": "SCHOOL_LIFE_SIM.bin",
+        "desc": "2D school-themed life sim in Godot (Stardew Valley style)",
+        "fullDesc": "A 2D school-themed life simulator built with Godot 4. Inspired by Stardew Valley, featuring pixel-art aesthetics, daily school routines, relationship systems, and various extracurricular activities. Currently in active development.",
+        "tags": ["Godot", "GDScript", "GameDev"],
+        "category": "game",
+        "codeUrl": null,
+        "demoUrl": null,
+        "wip": true
+    }
+]

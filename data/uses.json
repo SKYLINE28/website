@@ -1,0 +1,20 @@
+{
+  "hardware": [
+    { "name": "Main Dev Laptop", "desc": "Acer Nitro V15 4050 (2023)" },
+    { "name": "Mechanical Keyboard", "desc": "Ajazz AK820 (Modif)" },
+    { "name": "External Monitor", "desc": "On Going" },
+    { "name": "Tablet", "desc": "Huawei MatePad 12X (2025)" }
+  ],
+  "software": [
+    { "name": "Windows 11 & Fedora", "desc": "Dual-boot OS setup for versatile development." },
+    { "name": "Zen Browser", "desc": "My primary browser for privacy and productivity." },
+    { "name": "VS Code & Antigravity", "desc": "Primary IDE paired with powerful AI tools." },
+    { "name": "GitHub", "desc": "Hosting for code repositories and CI/CD." },
+    { "name": "Discord", "desc": "Core tool for community networking and chat." }
+  ],
+  "services": [
+    { "name": "Google Gemini", "desc": "Premium subscription for advanced AI reasoning." },
+    { "name": "Claude AI (Anthropic)", "desc": "Pro subscription for deep coding logic." },
+    { "name": "Coding Courses", "desc": "Various premium platforms for continuous learning." }
+  ]
+}

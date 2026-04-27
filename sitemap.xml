@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://twentyegg.com/</loc>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://twentyegg.com/pages/courses.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://twentyegg.com/pages/now.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://twentyegg.com/pages/support.html</loc>
+        <priority>0.8</priority>
+    </url>
+</urlset>

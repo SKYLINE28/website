@@ -2,25 +2,27 @@
    TYPEWRITER EFFECT
    =========================== */
 const TypewriterEffect = (function () {
-    const textArray = [
-        "Hallo welcome to my website profile",
-        "Building websites and games...",
-        "Leveling up my coding skills.",
-        "Let's create something awesome!"
-    ];
-
     const typingDelay = 100;
     const erasingDelay = 70;
     const newTextDelay = 2000;
     let textArrayIndex = 0;
     let charIndex = 0;
 
-    function type() {
-        const typewriterElement = document.getElementById("typewriter");
-        if (!typewriterElement) return;
+    function getTexts() {
+        return [
+            I18N.get('typewriter.0'),
+            I18N.get('typewriter.1'),
+            I18N.get('typewriter.2'),
+            I18N.get('typewriter.3'),
+        ];
+    }
 
-        if (charIndex < textArray[textArrayIndex].length) {
-            typewriterElement.textContent += textArray[textArrayIndex].charAt(charIndex);
+    function type() {
+        const el = document.getElementById("typewriter");
+        if (!el) return;
+        const texts = getTexts();
+        if (charIndex < texts[textArrayIndex].length) {
+            el.textContent += texts[textArrayIndex].charAt(charIndex);
             charIndex++;
             setTimeout(type, typingDelay);
         } else {
@@ -29,24 +31,27 @@ const TypewriterEffect = (function () {
     }
 
     function erase() {
-        const typewriterElement = document.getElementById("typewriter");
-        if (!typewriterElement) return;
-
+        const el = document.getElementById("typewriter");
+        if (!el) return;
+        const texts = getTexts();
         if (charIndex > 0) {
-            typewriterElement.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+            el.textContent = texts[textArrayIndex].substring(0, charIndex - 1);
             charIndex--;
             setTimeout(erase, erasingDelay);
         } else {
-            textArrayIndex++;
-            if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+            textArrayIndex = (textArrayIndex + 1) % getTexts().length;
             setTimeout(type, typingDelay + 1100);
         }
     }
 
     function init() {
-        if (document.getElementById("typewriter") && textArray.length) {
-            setTimeout(type, newTextDelay + 250);
-        }
+        if (document.getElementById("typewriter")) setTimeout(type, newTextDelay + 250);
+        // Restart on lang change
+        document.addEventListener('langChanged', () => {
+            const el = document.getElementById("typewriter");
+            if (el) { el.textContent = ''; textArrayIndex = 0; charIndex = 0; }
+            setTimeout(type, 300);
+        });
     }
 
     return { init };

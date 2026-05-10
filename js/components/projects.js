@@ -3,12 +3,6 @@
    =========================== */
 let PROJECTS_DATA = [];
 
-const FILTER_NAMES = {
-    all: 'ALL_FILES.sh',
-    web: 'WEB_APPS.exe',
-    game: 'GAMES.bin'
-};
-
 const PROJECTS_PER_PAGE = 3; // cards shown per page
 let projectCurrentPage = 1;
 
@@ -30,15 +24,30 @@ async function loadProjectsData() {
         if (grid) {
             grid.innerHTML = `
                 <div class="no-results">
-                    <p>&gt; ERROR: Failed to load project data.</p>
+                    <p>&gt; ${I18N.get('projects.error')}</p>
                     <button class="pixel-btn mt-2" id="retry-btn" style="width:auto">
-                        <i class="fa-solid fa-rotate-right"></i> RETRY
+                        <i class="fa-solid fa-rotate-right"></i> ${I18N.get('projects.retry')}
                     </button>
                 </div>`;
             document.getElementById('retry-btn')
                 ?.addEventListener('click', loadProjectsData);
         }
     }
+}
+
+function getProjectDesc(project) {
+    const lang = I18N.getLang();
+    return project[`desc_${lang}`] || project.desc || '';
+}
+
+function getProjectFullDesc(project) {
+    const lang = I18N.getLang();
+    return project[`fullDesc_${lang}`] || project.fullDesc || '';
+}
+
+function getProjectName(project) {
+    const lang = I18N.getLang();
+    return project[`name_${lang}`] || project.name || '';
 }
 
 function renderProjects(filter = 'all', query = '', page = 1) {
@@ -48,8 +57,11 @@ function renderProjects(filter = 'all', query = '', page = 1) {
 
     if (!grid) return;
 
-    // Update path bar label
-    if (filterLabel) filterLabel.textContent = FILTER_NAMES[filter] || 'ALL_FILES.sh';
+    // Update path bar label using i18n
+    if (filterLabel) {
+        const labelKey = `projects.filter_${filter}`;
+        filterLabel.textContent = I18N.get(labelKey) || 'ALL_FILES.sh';
+    }
 
     // Show loading, clear grid, remove any old pagination
     if (loadingEl) {
@@ -76,9 +88,11 @@ function renderProjects(filter = 'all', query = '', page = 1) {
         const q = query.toLowerCase().trim();
         const allFiltered = PROJECTS_DATA.filter(p => {
             const matchFilter = filter === 'all' || p.category === filter;
+            const name = getProjectName(p).toLowerCase();
+            const desc = getProjectDesc(p).toLowerCase();
             const matchQuery = !q ||
-                p.name.toLowerCase().includes(q) ||
-                p.desc.toLowerCase().includes(q) ||
+                name.includes(q) ||
+                desc.includes(q) ||
                 p.tags.some(t => t.toLowerCase().includes(q));
             return matchFilter && matchQuery;
         });
@@ -86,7 +100,7 @@ function renderProjects(filter = 'all', query = '', page = 1) {
         if (allFiltered.length === 0) {
             grid.innerHTML = `
                 <div class="no-results">
-                    <p>&gt; FILE_NOT_FOUND: No results for "<span class="highlight">${query || filter}</span>"</p>
+                    <p>&gt; ${I18N.get('projects.not_found')} "<span class="highlight">${query || filter}</span>"</p>
                     <p class="mt-1">Try a different filter or search term.</p>
                 </div>`;
             return;
@@ -105,26 +119,26 @@ function renderProjects(filter = 'all', query = '', page = 1) {
             card.className = 'project-card card-enter';
             card.setAttribute('tabindex', '0');
             card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', `View details for ${project.name}`);
+            card.setAttribute('aria-label', `View details for ${getProjectName(project)}`);
             card.dataset.id = project.id;
             card.style.animationDelay = `${index * 80}ms`;
 
-            const wipBadge = project.wip ? `<span class="wip-badge">[WIP]</span>` : '';
+            const wipBadge = project.wip ? `<span class="wip-badge">[${I18N.get('projects.wip')}]</span>` : '';
             const tagsHTML = project.tags.map(t => `<div class="tag highlight-tag">${t}</div>`).join('');
 
             const codeBtn = project.codeUrl
-                ? `<a href="${project.codeUrl}" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-brands fa-github"></i> CODE</a>`
-                : `<button class="pixel-btn" disabled title="Coming Soon"><i class="fa-brands fa-github"></i> CODE</button>`;
+                ? `<a href="${project.codeUrl}" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-brands fa-github"></i> ${I18N.get('projects.code')}</a>`
+                : `<button class="pixel-btn" disabled title="Coming Soon"><i class="fa-brands fa-github"></i> ${I18N.get('projects.code')}</button>`;
             const demoBtn = project.demoUrl
-                ? `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> DEMO</a>`
-                : `<button class="pixel-btn" disabled title="Coming Soon"><i class="fa-solid fa-arrow-up-right-from-square"></i> DEMO</button>`;
+                ? `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${I18N.get('projects.demo')}</a>`
+                : `<button class="pixel-btn" disabled title="Coming Soon"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${I18N.get('projects.demo')}</button>`;
 
             card.innerHTML = `
                 <div class="card-top">
-                    <h4>&gt; ${project.name} ${wipBadge}</h4>
+                    <h4>&gt; ${getProjectName(project)} ${wipBadge}</h4>
                     <span class="card-expand-hint">[CLICK]</span>
                 </div>
-                <p>${project.desc}</p>
+                <p>${getProjectDesc(project)}</p>
                 <div class="project-tags">${tagsHTML}</div>
                 <div class="project-card-footer mt-2">
                     ${codeBtn}
@@ -158,11 +172,11 @@ function renderProjects(filter = 'all', query = '', page = 1) {
             pag.innerHTML = `
                 <button class="pixel-btn pag-btn" id="pag-prev"
                     ${safePage <= 1 ? 'disabled' : ''}
-                    aria-label="Previous page">[&lt; PREV]</button>
-                <span class="pag-status">PAGE&nbsp;${safePage}&nbsp;/&nbsp;${totalPages}</span>
+                    aria-label="Previous page">${I18N.get('projects.prev')}</button>
+                <span class="pag-status">${I18N.get('projects.page')}&nbsp;${safePage}&nbsp;/&nbsp;${totalPages}</span>
                 <button class="pixel-btn pag-btn" id="pag-next"
                     ${safePage >= totalPages ? 'disabled' : ''}
-                    aria-label="Next page">[NEXT &gt;]</button>
+                    aria-label="Next page">${I18N.get('projects.next')}</button>
             `;
             grid.insertAdjacentElement('afterend', pag);
 
@@ -187,23 +201,23 @@ function openProjectOverlay(id) {
     if (!overlay || !titleEl || !bodyEl) return;
 
     const wipBadge = project.wip
-        ? `<span class="wip-badge">[WIP]</span>`
-        : `<span class="status-ok">[ACTIVE]</span>`;
+        ? `<span class="wip-badge">[${I18N.get('projects.wip')}]</span>`
+        : `<span class="status-ok">${I18N.get('overlay.active')}</span>`;
     const tagsHTML = project.tags.map(t => `<div class="tag highlight-tag">${t}</div>`).join('');
 
     const codeBtn = project.codeUrl
-        ? `<a href="${project.codeUrl}" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-brands fa-github"></i> VIEW CODE</a>`
-        : `<button class="pixel-btn" disabled>NO REPO YET</button>`;
+        ? `<a href="${project.codeUrl}" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-brands fa-github"></i> ${I18N.get('overlay.view_code')}</a>`
+        : `<button class="pixel-btn" disabled>${I18N.get('overlay.no_repo')}</button>`;
     const demoBtn = project.demoUrl
-        ? `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> LIVE DEMO</a>`
-        : `<button class="pixel-btn" disabled>NO DEMO YET</button>`;
+        ? `<a href="${project.demoUrl}" target="_blank" rel="noopener noreferrer" class="pixel-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${I18N.get('overlay.live_demo')}</a>`
+        : `<button class="pixel-btn" disabled>${I18N.get('overlay.no_demo')}</button>`;
 
-    titleEl.textContent = `> ${project.name}`;
+    titleEl.textContent = `> ${getProjectName(project)}`;
     bodyEl.innerHTML = `
         <div class="overlay-terminal">
-            <p class="term-line"><span class="term-prompt">STATUS&nbsp;&nbsp;:</span>${wipBadge}</p>
-            <p class="term-line"><span class="term-prompt">CATEGORY:</span><span>${project.category.toUpperCase()}</span></p>
-            <p class="term-desc">${project.fullDesc}</p>
+            <p class="term-line"><span class="term-prompt">${I18N.get('overlay.status')}&nbsp;&nbsp;:</span>${wipBadge}</p>
+            <p class="term-line"><span class="term-prompt">${I18N.get('overlay.category')}:</span><span>${project.category.toUpperCase()}</span></p>
+            <p class="term-desc">${getProjectFullDesc(project)}</p>
             <div class="term-tags">${tagsHTML}</div>
             <div class="term-actions">${codeBtn}${demoBtn}</div>
         </div>
@@ -300,6 +314,13 @@ const ProjectExplorer = (function () {
         // Overlay: Escape key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeProjectOverlay();
+        });
+
+        // Re-render on lang change
+        document.addEventListener('langChanged', () => {
+            const activeFilter = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+            const query = document.getElementById('project-search')?.value.trim() || '';
+            renderProjects(activeFilter, query, projectCurrentPage);
         });
     }
 

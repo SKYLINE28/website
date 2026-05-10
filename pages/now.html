@@ -52,25 +52,25 @@
         </button>
         <div id="drop-menu" class="pixel-panel drop-menu">
             <button id="theme-toggle" class="pixel-btn menu-item">
-                <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
+                <i class="fa-solid fa-moon"></i> <span data-i18n="nav.dark">Dark Mode</span>
             </button>
             <a href="../index.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-house"></i> Home
+                <i class="fa-solid fa-house"></i> <span data-i18n="nav.home">Home</span>
             </a>
             <a href="courses.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-book"></i> Courses
+                <i class="fa-solid fa-book"></i> <span data-i18n="nav.courses">Courses</span>
             </a>
             <a href="now.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-satellite-dish"></i> /now
+                <i class="fa-solid fa-satellite-dish"></i> <span data-i18n="nav.now">/now</span>
             </a>
             <a href="uses.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-toolbox"></i> /uses
+                <i class="fa-solid fa-toolbox"></i> <span data-i18n="nav.uses">/uses</span>
             </a>
             <a href="blog.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-pen-nib"></i> Blog
+                <i class="fa-solid fa-pen-nib"></i> <span data-i18n="nav.blog">Blog</span>
             </a>
             <a href="support.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-hand-holding-dollar"></i> Support
+                <i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="nav.support">Support</span>
             </a>
         </div>
     </nav>
@@ -78,34 +78,34 @@
     <main class="container" style="max-width: 700px; margin: 0 auto;">
         <section class="pixel-panel reveal mt-4">
             <div class="panel-header">
-                <h1 style="font-size: 1.6rem;">> NOW.exe <span class="now-status-blink">[LIVE]</span></h1>
+                <h1 style="font-size: 1.6rem;">&gt; NOW.exe <span class="now-status-blink">[LIVE]</span></h1>
                 <p style="font-size: 1.1rem; color: var(--accent-color); margin-top: 0.3rem;">What I'm doing right now</p>
             </div>
             <div class="panel-body">
 
                 <div class="now-section">
-                    <span class="now-label"><i class="fa-solid fa-signal"></i> CURRENT_STATUS</span>
+                    <span class="now-label"><i class="fa-solid fa-signal"></i> <span data-i18n="now.status">CURRENT_STATUS</span></span>
                     <div class="now-content">
                         <p>📍 Based in Lampung, Indonesia</p>
                         <p>🎓 Studying Informatics Engineering @ ITERA</p>
-                        <p>💻 Actively building projects & learning new tech</p>
+                        <p>💻 Actively building projects &amp; learning new tech</p>
                         <p>🍵 Fueled by matcha and snacks</p>
                     </div>
                 </div>
 
                 <div class="now-section">
-                    <span class="now-label"><i class="fa-solid fa-book-open"></i> LEARNING_NOW</span>
+                    <span class="now-label"><i class="fa-solid fa-book-open"></i> <span data-i18n="now.learning">LEARNING_NOW</span></span>
                     <div class="now-content">
                         <ul>
                             <li>HTML/CSS Fundamental</li>
                             <li>Godot 4</li>
-                            <li>Data Structures & Algorithms in C++</li>
+                            <li>Data Structures &amp; Algorithms in C++</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="now-section">
-                    <span class="now-label"><i class="fa-solid fa-hammer"></i> BUILDING_NOW</span>
+                    <span class="now-label"><i class="fa-solid fa-hammer"></i> <span data-i18n="now.building">BUILDING_NOW</span></span>
                     <div class="now-content">
                         <ul>
                             <li>2D school-themed life sim in Godot (Stardew Valley style)</li>
@@ -115,19 +115,19 @@
                 </div>
 
                 <div class="now-section">
-                    <span class="now-label"><i class="fa-solid fa-headphones"></i> LISTENING_TO</span>
+                    <span class="now-label"><i class="fa-solid fa-headphones"></i> <span data-i18n="now.listening">LISTENING_TO</span></span>
                     <div class="now-content">
                         <ul>
                             <li>Bruno Mars</li>
                             <li>Taylor Swift</li>
                             <li>Indonesian songs</li>
                             <li>English songs</li>
-                            <li>Anime & K-Drama songs</li>
+                            <li>Anime &amp; K-Drama songs</li>
                         </ul>
                     </div>
                 </div>
 
-                <p class="now-timestamp">Last updated: April 2026</p>
+                <p class="now-timestamp" data-i18n="now.updated">Last updated: April 2026</p>
             </div>
         </section>
     </main>
@@ -137,11 +137,15 @@
         <i class="fa-solid fa-arrow-up"></i> <span class="hidden-mobile-text">TOP</span>
     </button>
 
+    <!-- i18n — MUST be first, no defer -->
+    <script src="../js/core/i18n.js"></script>
+
     <!-- Core Scripts — NO defer (critical) -->
     <script src="../js/core/theme.js"></script>
     <script src="../js/core/main.js"></script>
     
     <!-- Component Scripts — defer -->
+    <script src="../js/components/lang-switcher.js" defer></script>
     <script src="../js/components/nav.js" defer></script>
     <script src="../js/components/terminal.js" defer></script>
     

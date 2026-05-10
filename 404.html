@@ -40,7 +40,7 @@
         <main class="error-container reveal">
             <section class="pixel-panel" style="text-align: center;">
                 <div class="error-code">404</div>
-                <h1 class="error-title">ERROR_404: FILE_NOT_FOUND</h1>
+                <h1 class="error-title" data-i18n="404.title">ERROR_404: FILE_NOT_FOUND</h1>
 
                 <div class="glitch-bar-container">
                     <div class="glitch-bar"></div>
@@ -55,17 +55,21 @@
                 </div>
 
                 <a href="index.html" class="pixel-btn action-btn" style="width: auto; display: inline-flex;">
-                    <i class="fa-solid fa-house"></i> [RETURN_HOME.exe]
+                    <i class="fa-solid fa-house"></i> <span data-i18n="404.return">[RETURN_HOME.exe]</span>
                 </a>
             </section>
         </main>
     </div>
+
+    <!-- i18n — MUST be first, no defer -->
+    <script src="js/core/i18n.js"></script>
 
     <!-- Core Scripts — NO defer (critical) -->
     <script src="js/core/theme.js"></script>
     <script src="js/core/main.js"></script>
     
     <!-- Component Scripts — defer -->
+    <script src="js/components/lang-switcher.js" defer></script>
     <script src="js/components/nav.js" defer></script>
     <script src="js/components/terminal.js" defer></script>
     

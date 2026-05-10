@@ -1677,3 +1677,33 @@ footer {
 .pixel-input:not(:placeholder-shown):invalid {
     border-color: #ef4444; /* Red */
 }
+/* =========================================
+   LANGUAGE SWITCHER
+   ========================================= */
+.lang-switcher {
+    padding: 0.8rem 1rem;
+    border-bottom: var(--border-width) solid var(--text-color);
+    margin-bottom: 0.5rem;
+}
+.lang-label {
+    font-size: 1rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+.lang-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.lang-btn {
+    font-size: 1rem !important;
+    padding: 0.4rem 0.8rem !important;
+    min-height: 36px !important;
+    width: auto !important;
+}
+.lang-btn.active {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+

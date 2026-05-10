@@ -52,25 +52,25 @@
         </button>
         <div id="drop-menu" class="pixel-panel drop-menu">
             <button id="theme-toggle" class="pixel-btn menu-item">
-                <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
+                <i class="fa-solid fa-moon"></i> <span data-i18n="nav.dark">Dark Mode</span>
             </button>
             <a href="../index.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-house"></i> Home
+                <i class="fa-solid fa-house"></i> <span data-i18n="nav.home">Home</span>
             </a>
             <a href="courses.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-book"></i> Courses
+                <i class="fa-solid fa-book"></i> <span data-i18n="nav.courses">Courses</span>
             </a>
             <a href="now.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-satellite-dish"></i> /now
+                <i class="fa-solid fa-satellite-dish"></i> <span data-i18n="nav.now">/now</span>
             </a>
             <a href="uses.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-toolbox"></i> /uses
+                <i class="fa-solid fa-toolbox"></i> <span data-i18n="nav.uses">/uses</span>
             </a>
             <a href="blog.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-pen-nib"></i> Blog
+                <i class="fa-solid fa-pen-nib"></i> <span data-i18n="nav.blog">Blog</span>
             </a>
             <a href="support.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-hand-holding-dollar"></i> Support
+                <i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="nav.support">Support</span>
             </a>
         </div>
     </nav>
@@ -79,7 +79,7 @@
         <main class="system-menu-panel reveal" style="width: 100%;">
             <section class="pixel-panel flex-center text-center" style="flex-direction: column;">
                 <div class="panel-header" style="width: 100%;">
-                    <h3>> SYSTEM_MENU.exe</h3>
+                    <h3>&gt; SYSTEM_MENU.exe</h3>
                 </div>
                 <div class="panel-body flex-center" style="flex-direction: column; width: 100%;">
                     <i class="fa-solid fa-terminal system-menu-icon" aria-hidden="true"></i>
@@ -115,11 +115,15 @@
         <i class="fa-solid fa-arrow-up"></i> <span class="hidden-mobile-text">TOP</span>
     </button>
 
+    <!-- i18n — MUST be first, no defer -->
+    <script src="../js/core/i18n.js"></script>
+
     <!-- Core Scripts — NO defer (critical) -->
     <script src="../js/core/theme.js"></script>
     <script src="../js/core/main.js"></script>
     
     <!-- Component Scripts — defer -->
+    <script src="../js/components/lang-switcher.js" defer></script>
     <script src="../js/components/nav.js" defer></script>
     <script src="../js/components/terminal.js" defer></script>
     

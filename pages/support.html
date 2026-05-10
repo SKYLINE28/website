@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TwentyEgg | Support & Report</title>
+    <title>TwentyEgg | Support &amp; Report</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Portfolio of Damar Rifaldi Mutakin aka TwentyEgg — Informatics student at ITERA, building websites and games.">
@@ -12,8 +12,8 @@
     <meta name="keywords" content="Damar Rifaldi Mutakin, TwentyEgg, Support, Bug Report, Portfolio">
     <link rel="canonical" href="https://twentyegg.com/pages/support.html">
     <link rel="manifest" href="../manifest.json">
-    <meta property="og:title" content="TwentyEgg | Support & Report">
-    <meta property="og:description" content="Portfolio of Damar Rifaldi Mutakin — web developer & game enthusiast">
+    <meta property="og:title" content="TwentyEgg | Support &amp; Report">
+    <meta property="og:description" content="Portfolio of Damar Rifaldi Mutakin — web developer &amp; game enthusiast">
     <meta property="og:image" content="https://twentyegg.com/assets/images/avatar.jpg">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#D97757">
@@ -52,25 +52,25 @@
         </button>
         <div id="drop-menu" class="pixel-panel drop-menu">
             <button id="theme-toggle" class="pixel-btn menu-item">
-                <i class="fa-solid fa-moon"></i> <span>Dark Mode</span>
+                <i class="fa-solid fa-moon"></i> <span data-i18n="nav.dark">Dark Mode</span>
             </button>
             <a href="../index.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-house"></i> Home
+                <i class="fa-solid fa-house"></i> <span data-i18n="nav.home">Home</span>
             </a>
             <a href="courses.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-book"></i> Courses
+                <i class="fa-solid fa-book"></i> <span data-i18n="nav.courses">Courses</span>
             </a>
             <a href="now.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-satellite-dish"></i> /now
+                <i class="fa-solid fa-satellite-dish"></i> <span data-i18n="nav.now">/now</span>
             </a>
             <a href="uses.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-toolbox"></i> /uses
+                <i class="fa-solid fa-toolbox"></i> <span data-i18n="nav.uses">/uses</span>
             </a>
             <a href="blog.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-pen-nib"></i> Blog
+                <i class="fa-solid fa-pen-nib"></i> <span data-i18n="nav.blog">Blog</span>
             </a>
             <a href="support.html" class="pixel-btn menu-item">
-                <i class="fa-solid fa-hand-holding-dollar"></i> Support
+                <i class="fa-solid fa-hand-holding-dollar"></i> <span data-i18n="nav.support">Support</span>
             </a>
         </div>
     </nav>
@@ -80,33 +80,44 @@
             <!-- Report Bug Section -->
             <section class="pixel-panel flex-center text-center" style="flex-direction: column;">
                 <div class="panel-header" style="width: 100%;">
-                    <h3>> SUPPORT_CENTER.exe</h3>
+                    <h3 data-i18n="support.bug_title">&gt; SUPPORT_CENTER.exe</h3>
                 </div>
                 <div class="panel-body flex-center" style="flex-direction: column; width: 100%;">
                     <i class="fa-solid fa-bug system-menu-icon text-center" aria-hidden="true" style="margin-bottom: 1rem;"></i>
-                    <p class="text-center mb-3">Menemukan bug, error, atau sekadar ingin menyapa? Kirim pesan via form ini!</p>
 
                     <form action="https://formspree.io/f/xleqvoov" method="POST" class="contact-form" id="support-form" style="width: 100%; max-width: 400px; margin: 0 auto;">
                         <!-- Honeypot -->
                         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
                         
                         <div class="form-group">
-                            <label for="name">> NAMA_LENGKAP.str</label>
-                            <input type="text" id="name" name="name" required placeholder="Masukkan nama..." class="pixel-input">
+                            <label for="name" data-i18n="support.name_label">&gt; NAMA_LENGKAP.str</label>
+                            <input type="text" id="name" name="name" required
+                                   placeholder="Masukkan nama..."
+                                   data-i18n="support.name_placeholder"
+                                   data-i18n-attr="placeholder"
+                                   class="pixel-input">
                         </div>
                         <div class="form-group">
-                            <label for="email">> EMAIL_AKTIF.str</label>
-                            <input type="email" id="email" name="_replyto" required placeholder="alamat@email.com" class="pixel-input">
+                            <label for="email" data-i18n="support.email_label">&gt; EMAIL_AKTIF.str</label>
+                            <input type="email" id="email" name="_replyto" required
+                                   placeholder="alamat@email.com"
+                                   data-i18n="support.email_placeholder"
+                                   data-i18n-attr="placeholder"
+                                   class="pixel-input">
                         </div>
                         <div class="form-group">
-                            <label for="message">> PESAN_LOG.txt</label>
-                            <textarea id="message" name="message" required placeholder="Tulis laporan atau pesan di sini..." rows="4" class="pixel-input"></textarea>
+                            <label for="message" data-i18n="support.msg_label">&gt; PESAN_LOG.txt</label>
+                            <textarea id="message" name="message" required
+                                      placeholder="Tulis laporan atau pesan di sini..."
+                                      data-i18n="support.msg_placeholder"
+                                      data-i18n-attr="placeholder"
+                                      rows="4" class="pixel-input"></textarea>
                         </div>
                         
                         <div id="form-status" class="form-status mt-2 text-center" style="display: none;"></div>
                         <div class="flex-center mt-2">
                             <button type="submit" class="pixel-btn action-btn" style="width: 100%;">
-                                <span><i class="fa-solid fa-paper-plane"></i> SUBMIT_LOG</span>
+                                <span><i class="fa-solid fa-paper-plane"></i> <span data-i18n="support.submit">SUBMIT_LOG</span></span>
                             </button>
                         </div>
                     </form>
@@ -116,11 +127,11 @@
             <!-- Donation Section -->
             <section class="pixel-panel flex-center text-center" style="flex-direction: column;">
                 <div class="panel-header" style="width: 100%;">
-                    <h3>> SAWERAN.exe</h3>
+                    <h3 data-i18n="support.donate_title">&gt; SAWERAN.exe</h3>
                 </div>
                 <div class="panel-body flex-center" style="flex-direction: column;">
                     <i class="fa-solid fa-sack-dollar system-menu-icon" aria-hidden="true"></i>
-                    <p class="mb-2">Makasih Jajanannya Semoga Berkah dan Bikin Saya Jadi Semangat</p>
+                    <p class="mb-2" data-i18n="support.donate_desc">Makasih Jajanannya Semoga Berkah dan Bikin Saya Jadi Semangat</p>
 
                     <div class="social-links mt-2" style="width: 100%; justify-content: center; align-items: center;">
                         <a href="https://tiptap.gg/twentyegg" target="_blank" rel="noopener noreferrer" class="pixel-btn action-btn" style="width: auto;">
@@ -140,11 +151,15 @@
         <i class="fa-solid fa-arrow-up"></i> <span class="hidden-mobile-text">TOP</span>
     </button>
 
+    <!-- i18n — MUST be first, no defer -->
+    <script src="../js/core/i18n.js"></script>
+
     <!-- Core Scripts — NO defer (critical) -->
     <script src="../js/core/theme.js"></script>
     <script src="../js/core/main.js"></script>
     
     <!-- Component Scripts — defer -->
+    <script src="../js/components/lang-switcher.js" defer></script>
     <script src="../js/components/nav.js" defer></script>
     <script src="../js/components/terminal.js" defer></script>
     <script src="../js/components/support-form.js" defer></script>

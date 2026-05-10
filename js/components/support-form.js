@@ -5,11 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!contactForm) return;
 
     const submitBtn = contactForm.querySelector('button[type="submit"]');
-    // Ensure we are targeting the inner span for text replacement if it exists
     const submitText = submitBtn.querySelector('span') || submitBtn;
     const originalHTML = submitText.innerHTML;
 
-    // Create status element if it doesn't exist
     let statusEl = document.getElementById('form-status');
     if (!statusEl) {
         statusEl = document.createElement('div');
@@ -19,97 +17,95 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.insertBefore(statusEl, submitBtn.parentElement);
     }
 
-    // Interactive focus effects (already handled partially by CSS, adding a class for potential JS-driven animations)
-    const inputs = contactForm.querySelectorAll('.pixel-input');
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.parentElement.classList.add('focused');
-        });
-        input.addEventListener('blur', () => {
-            input.parentElement.classList.remove('focused');
-        });
+    // Focus effects
+    contactForm.querySelectorAll('.pixel-input').forEach(input => {
+        input.addEventListener('focus', () => input.parentElement.classList.add('focused'));
+        input.addEventListener('blur', () => input.parentElement.classList.remove('focused'));
+    });
+
+    // Re-apply i18n on lang change
+    document.addEventListener('langChanged', () => {
+        const nameLabel = document.querySelector('label[for="name"]');
+        const emailLabel = document.querySelector('label[for="email"]');
+        const msgLabel = document.querySelector('label[for="message"]');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const msgInput = document.getElementById('message');
+        const btn = contactForm.querySelector('button[type="submit"] span') || contactForm.querySelector('button[type="submit"]');
+        
+        if (nameLabel) nameLabel.textContent = I18N.get('support.name_label');
+        if (emailLabel) emailLabel.textContent = I18N.get('support.email_label');
+        if (msgLabel) msgLabel.textContent = I18N.get('support.msg_label');
+        if (nameInput) nameInput.placeholder = I18N.get('support.name_placeholder');
+        if (emailInput) emailInput.placeholder = I18N.get('support.email_placeholder');
+        if (msgInput) msgInput.placeholder = I18N.get('support.msg_placeholder');
+        if (btn && !submitBtn.disabled) btn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> ${I18N.get('support.submit')}`;
     });
 
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
-        // Client-side validation
+
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const messageInput = document.getElementById('message');
-
         const name = nameInput.value.trim();
         const email = emailInput.value.trim();
         const message = messageInput.value.trim();
 
+        // Validation
         if (!name || !email || !message) {
-            showStatus('> ERROR: Semua bidang wajib diisi!', 'error');
-            // Shake effect for empty inputs
-            if (!name) nameInput.classList.add('shake');
-            if (!email) emailInput.classList.add('shake');
-            if (!message) messageInput.classList.add('shake');
-            
-            setTimeout(() => {
-                nameInput.classList.remove('shake');
-                emailInput.classList.remove('shake');
-                messageInput.classList.remove('shake');
-            }, 500);
+            showStatus(I18N.get('support.error_fields'), 'error');
+            if (!name) shake(nameInput);
+            if (!email) shake(emailInput);
+            if (!message) shake(messageInput);
             return;
         }
-
-        // Email format validation (basic)
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
-            showStatus('> ERROR: Format email tidak valid!', 'error');
-            emailInput.classList.add('shake');
-            setTimeout(() => emailInput.classList.remove('shake'), 500);
+            showStatus(I18N.get('support.error_email'), 'error');
+            shake(emailInput);
             return;
         }
 
-        // Set Loading State
+        // Loading state
         submitBtn.disabled = true;
-        submitBtn.classList.add('loading');
-        submitText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> MENGIRIM_LOG...';
+        submitText.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${I18N.get('support.sending')}`;
         statusEl.style.display = 'none';
         contactForm.style.opacity = '0.7';
 
-        const formData = new FormData(contactForm);
-
         try {
             const response = await fetch(contactForm.action, {
-                method: contactForm.method,
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: { 'Accept': 'application/json' }
             });
 
             if (response.ok) {
-                showStatus('> SUKSES: Terima kasih atas laporan Anda!', 'success');
+                showStatus(I18N.get('support.success'), 'success');
                 contactForm.reset();
             } else {
-                const data = await response.json();
-                if (Object.hasOwn(data, 'errors')) {
-                    const errors = data.errors.map(error => error.message).join(', ');
-                    showStatus(`> ERROR: ${errors}`, 'error');
-                } else {
-                    showStatus('> ERROR: Terjadi kesalahan saat mengirim pesan.', 'error');
-                }
+                const data = await response.json().catch(() => ({}));
+                const errMsg = data?.errors?.map(e => e.message).join(', ') || I18N.get('support.error_send');
+                showStatus(`> ERROR: ${errMsg}`, 'error');
             }
-        } catch (error) {
-            showStatus('> ERROR: Gagal terhubung ke server.', 'error');
+        } catch {
+            showStatus(I18N.get('support.error_connect'), 'error');
         } finally {
-            // Restore button state
             submitBtn.disabled = false;
-            submitBtn.classList.remove('loading');
             submitText.innerHTML = originalHTML;
             contactForm.style.opacity = '1';
         }
     });
 
+    function shake(el) {
+        el.classList.add('shake');
+        setTimeout(() => el.classList.remove('shake'), 500);
+    }
+
     function showStatus(message, type) {
         statusEl.textContent = message;
         statusEl.className = `form-status mt-2 text-center ${type}`;
         statusEl.style.display = 'block';
+        statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 });
